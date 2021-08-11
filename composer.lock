@@ -1,0 +1,56 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "92190bbdded2b08c5f3677302755ce03",
+    "packages": [
+        {
+            "name": "blackjack200/simple-packet-handler",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Blackjack200/SimplePacketHandler.git",
+                "reference": "9198ee9ffc581f3a5c04d43a72ab2f75f5be2163"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Blackjack200/SimplePacketHandler/zipball/9198ee9ffc581f3a5c04d43a72ab2f75f5be2163",
+                "reference": "9198ee9ffc581f3a5c04d43a72ab2f75f5be2163",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "": [
+                        "src"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "support": {
+                "source": "https://github.com/Blackjack200/SimplePacketHandler/tree/master"
+            },
+            "time": "2021-08-11T11:49:30+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "blackjack200/simple-packet-handler": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
+}

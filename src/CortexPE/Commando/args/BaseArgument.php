@@ -35,12 +35,9 @@ use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\network\mcpe\protocol\types\command\CommandParameter;
 
 abstract class BaseArgument {
-	/** @var string */
-	protected $name;
-	/** @var bool */
-	protected $optional = false;
-	/** @var CommandParameter */
-	protected $parameterData;
+	protected string $name;
+	protected bool $optional = false;
+	protected CommandParameter $parameterData;
 
 	public function __construct(string $name, bool $optional = false) {
 		$this->name = $name;
@@ -55,32 +52,17 @@ abstract class BaseArgument {
 
 	abstract public function getNetworkType(): int;
 
-	/**
-	 * @param string            $testString
-	 * @param CommandSender     $sender
-	 *
-	 * @return bool
-	 */
 	abstract public function canParse(string $testString, CommandSender $sender): bool;
 
 	/**
-	 * @param string        $argument
-	 * @param CommandSender $sender
-	 *
 	 * @return mixed
 	 */
 	abstract public function parse(string $argument, CommandSender $sender);
 
-	/**
-	 * @return string
-	 */
 	public function getName(): string {
 		return $this->name;
 	}
 
-	/**
-	 * @return bool
-	 */
 	public function isOptional(): bool {
 		return $this->optional;
 	}
@@ -88,8 +70,6 @@ abstract class BaseArgument {
 	/**
 	 * Returns how much command arguments
 	 * it takes to build the full argument
-	 *
-	 * @return int
 	 */
 	public function getSpanLength(): int {
 		return 1;

@@ -47,11 +47,8 @@ use function array_unshift;
 use function count;
 
 class PacketHooker implements Listener {
-	/** @var bool */
-	private static $isRegistered = false;
-
-	/** @var bool */
-	private static $isIntercepting = false;
+	private static bool $isRegistered = false;
+	private static bool $isIntercepting = false;
 
 	public static function isRegistered(): bool {
 		return self::$isRegistered;

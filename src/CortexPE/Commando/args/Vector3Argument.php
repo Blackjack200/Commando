@@ -77,17 +77,11 @@ class Vector3Argument extends BaseArgument {
 				$offset = substr($coord, 1);
 
 				// replace base coordinate with actual entity coordinates
-				switch($k){
-					case 0:
-						$coord = $sender->x;
-						break;
-					case 1:
-						$coord = $sender->y;
-						break;
-					case 2:
-						$coord = $sender->z;
-						break;
-				}
+				$coord = match ($k) {
+					0 => $sender->x,
+					1 => $sender->y,
+					2 => $sender->z,
+				};
 			}
 			$vals[] = (float)$coord + (float)$offset;
 		}

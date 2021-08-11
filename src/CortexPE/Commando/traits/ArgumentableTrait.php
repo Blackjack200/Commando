@@ -46,9 +46,9 @@ use function usort;
 
 trait ArgumentableTrait {
 	/** @var BaseArgument[][] */
-	private $argumentList = []; // [argumentPosition => [...possible BaseArgument(s)]]
+	private array $argumentList = []; // [argumentPosition => [...possible BaseArgument(s)]]
 	/** @var bool[] */
-	private $requiredArgumentCount = [];
+	private array $requiredArgumentCount = [];
 
 	/**
 	 * This is where all the arguments, permissions, sub-commands, etc would be registered
@@ -99,7 +99,7 @@ trait ArgumentableTrait {
 		if(count($rawArgs) > 0) {
 			foreach($this->argumentList as $pos => $possibleArguments) {
 				// try the one that spans more first... before the others
-				usort($possibleArguments, function (BaseArgument $a): int {
+				usort($possibleArguments, static function (BaseArgument $a): int {
 					if($a->getSpanLength() === PHP_INT_MAX) { // if it takes unlimited arguments, pull it down
 						return 1;
 					}
@@ -192,10 +192,10 @@ trait ArgumentableTrait {
 		$name = $parent . (empty($parent) ? "" : " ") . $this->getName();
 		$msg = TextFormat::RED .  "/" . $name;
 		$args = [];
-		foreach($this->argumentList as $pos => $arguments) {
+		foreach($this->argumentList as $arguments) {
 			$hasOptional = false;
 			$names = [];
-			foreach($arguments as $k => $argument) {
+			foreach($arguments as $argument) {
 				$names[] = $argument->getName() . ":" . $argument->getTypeName();
 				if($argument->isOptional()) {
 					$hasOptional = true;

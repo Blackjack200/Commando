@@ -35,6 +35,7 @@ use CortexPE\Commando\traits\ArgumentableTrait;
 use CortexPE\Commando\traits\IArgumentable;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginBase;
 use pocketmine\plugin\PluginOwned;
 use pocketmine\utils\TextFormat;
@@ -54,8 +55,7 @@ abstract class BaseCommand extends Command implements IArgumentable, IRunnable, 
 	public const ERR_NO_ARGUMENTS = 0x04;
 	public const ERR_INVALID_ARGUMENTS = 0x05;
 
-	/** @var string[] */
-	protected $errorMessages = [
+	protected array $errorMessages = [
 		self::ERR_INVALID_ARG_VALUE => TextFormat::RED . "Invalid value '{value}' for argument #{position}. Expecting: {expected}.",
 		self::ERR_TOO_MANY_ARGUMENTS => TextFormat::RED . "Too many arguments given.",
 		self::ERR_INSUFFICIENT_ARGUMENTS => TextFormat::RED . "Insufficient number of arguments given.",
@@ -63,20 +63,18 @@ abstract class BaseCommand extends Command implements IArgumentable, IRunnable, 
 		self::ERR_INVALID_ARGUMENTS => TextFormat::RED . "Invalid arguments supplied.",
 	];
 
-	/** @var CommandSender */
-	protected $currentSender;
+	protected CommandSender $currentSender;
 
 	/** @var BaseSubCommand[] */
-	private $subCommands = [];
+	private array $subCommands = [];
 
 	/** @var BaseConstraint[] */
-	private $constraints = [];
+	private array $constraints = [];
 
-	/** @var PluginBase */
-	protected $plugin;
+	protected Plugin $plugin;
 
 	public function __construct(
-		PluginBase $plugin,
+		Plugin $plugin,
 		string $name,
 		string $description = "",
 		array $aliases = []
@@ -89,7 +87,7 @@ abstract class BaseCommand extends Command implements IArgumentable, IRunnable, 
 		$this->usageMessage = $this->generateUsageMessage();
 	}
 
-	public function getOwningPlugin(): PluginBase {
+	public function getOwningPlugin(): Plugin {
 		return $this->plugin;
 	}
 
@@ -150,7 +148,7 @@ abstract class BaseCommand extends Command implements IArgumentable, IRunnable, 
 	}
 
 	public function sendError(int $errorCode, array $args = []): void {
-		$str = (string)$this->errorMessages[$errorCode];
+		$str = $this->errorMessages[$errorCode];
 		foreach($args as $item => $value) {
 			$str = str_replace("{{$item}}", (string)$value, $str);
 		}

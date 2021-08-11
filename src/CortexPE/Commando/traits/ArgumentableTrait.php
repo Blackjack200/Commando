@@ -33,6 +33,7 @@ namespace CortexPE\Commando\traits;
 use CortexPE\Commando\args\BaseArgument;
 use CortexPE\Commando\args\TextArgument;
 use CortexPE\Commando\BaseCommand;
+use CortexPE\Commando\BaseSubCommand;
 use CortexPE\Commando\exception\ArgumentOrderException;
 use pocketmine\command\CommandSender;
 use pocketmine\utils\TextFormat;
@@ -208,7 +209,10 @@ trait ArgumentableTrait {
 				$args[] = "<" . $names . ">";
 			}
 		}
-		$msg .= ((empty($args)) ? "" : " ") .  implode(TextFormat::RED . " ", $args) . ": " . $this->getDescription();
+		$msg .= ((empty($args)) ? "" : " ") .  implode(TextFormat::RED . " ", $args);
+		if(trim($this->getDescription()) !== ''){
+			$msg .= ": " . $this->getDescription();
+		}
 		foreach($this->subCommands as $label => $subCommand){
 			if($label === $subCommand->getName()){
 				$msg .= "\n - " . $subCommand->generateUsageMessage($name);

@@ -33,7 +33,7 @@ use pocketmine\plugin\Plugin;
 use function trim;
 
 abstract class BaseSubCommand extends BaseCommand{
-	protected self $parent;
+	protected BaseCommand $parent;
 
 	public function __construct(Plugin $plugin, string $name, string $description = "", array $aliases = []){
 		parent::__construct($plugin, $name, $description, $aliases);
@@ -48,7 +48,7 @@ abstract class BaseSubCommand extends BaseCommand{
 	/**
 	 * @internal Used to pass the parent context from the parent command
 	 */
-	public function setParent(BaseSubCommand $parent): void {
+	public function setParent(BaseCommand $parent): void {
 		$this->parent = $parent;
 	}
 

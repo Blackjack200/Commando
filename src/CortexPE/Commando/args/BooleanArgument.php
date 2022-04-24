@@ -42,6 +42,10 @@ class BooleanArgument extends StringEnumArgument {
 		return "bool";
 	}
 
+	public function getEnumName(): string {
+		return "bool";
+	}
+
 	public function parse(string $argument, CommandSender $sender) {
 		return $this->getValue($argument);
 	}

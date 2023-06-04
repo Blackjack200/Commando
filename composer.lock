@@ -12,34 +12,42 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Blackjack200/SimplePacketHandler.git",
-                "reference": "9198ee9ffc581f3a5c04d43a72ab2f75f5be2163"
+                "reference": "fd5166af9f16f326362c79a88fdc497c60e58963"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Blackjack200/SimplePacketHandler/zipball/9198ee9ffc581f3a5c04d43a72ab2f75f5be2163",
-                "reference": "9198ee9ffc581f3a5c04d43a72ab2f75f5be2163",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/Blackjack200/SimplePacketHandler/zipball/fd5166af9f16f326362c79a88fdc497c60e58963",
+                "reference": "fd5166af9f16f326362c79a88fdc497c60e58963",
+                "shasum": ""
             },
             "default-branch": true,
             "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "": [
-                        "src"
-                    ]
+            "extra": {
+                "virion": {
+                    "spec": "3.0",
+                    "namespace-root": "muqsit\\simplepackethandler"
                 }
             },
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            },
             "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Muqsit",
+                    "email": "hackhack05@gmail.com"
+                }
+            ],
+            "description": "Handle specific data packets (virion for PMMP API 4.0.0)",
             "support": {
                 "source": "https://github.com/Blackjack200/SimplePacketHandler/tree/master"
             },
-            "time": "2021-08-11T11:49:30+00:00"
+            "time": "2023-06-04T05:29:13+00:00"
         }
     ],
     "packages-dev": [],
@@ -52,5 +60,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.3.0"
 }
